@@ -42,11 +42,19 @@ class _MyWidgetState extends State<MyWidget> {
         leading: Icon(Icons.dangerous),
         title: const Text('AppBar'),
       ),
-      body: PageView(
-        controller: controller,
-        children: <Widget>[
-          page1(),
-          page2(),
+      body: Column(
+        children: [
+          Text('data'),
+          Expanded(
+            child: PageView(
+              controller: controller,
+              children: <Widget>[
+                page1(),
+                page2(),
+              ],
+            ),
+          ),
+          Text('data'),
         ],
       ),
     );
