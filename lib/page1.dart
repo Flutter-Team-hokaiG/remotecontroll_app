@@ -4,7 +4,7 @@ Widget page1() {
   return Center(
     child: Container(
       child: Text(
-        'PageView(横)',
+        'PageView Page1',
         style: TextStyle(fontSize: 50.0),
       ),
     ),

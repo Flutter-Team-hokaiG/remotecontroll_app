@@ -5,7 +5,7 @@ Widget page2() {
   return Center(
     child: Column(
       children: [
-        Text('dataC', textScaleFactor: 2),
+        Container(child: Text('Page2', textScaleFactor: 4), color: Colors.red),
         Expanded(
           child: PageView(
             controller: controller,
@@ -15,7 +15,14 @@ Widget page2() {
             ],
           ),
         ),
-        Text('dataD', textScaleFactor: 2),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('dataA', textScaleFactor: 2),
+            SizedBox(width: 30),
+            Text('dataB', textScaleFactor: 2),
+          ],
+        ),
       ],
     ),
   );

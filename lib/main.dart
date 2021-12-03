@@ -48,13 +48,15 @@ class _MyWidgetState extends State<MyWidget> {
           Expanded(
             child: PageView(
               controller: controller,
+              onPageChanged: (pageIdx) => controller.animateToPage(pageIdx,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.elasticIn),
               children: <Widget>[
                 page1(),
                 page2(),
               ],
             ),
           ),
-          Text('dataB', textScaleFactor: 4),
         ],
       ),
     );
