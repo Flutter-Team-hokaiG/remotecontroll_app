@@ -44,7 +44,7 @@ class _MyWidgetState extends State<MyWidget> {
       ),
       body: Column(
         children: [
-          Text('data'),
+          Text('dataA', textScaleFactor: 4),
           Expanded(
             child: PageView(
               controller: controller,
@@ -54,7 +54,7 @@ class _MyWidgetState extends State<MyWidget> {
               ],
             ),
           ),
-          Text('data'),
+          Text('dataB', textScaleFactor: 4),
         ],
       ),
     );
