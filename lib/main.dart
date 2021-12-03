@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'page1.dart';
+import 'page2.dart';
 
 void main() => runApp(MyApp());
 
@@ -46,28 +48,6 @@ class _MyWidgetState extends State<MyWidget> {
           page1(),
           page2(),
         ],
-      ),
-    );
-  }
-
-  Widget page1() {
-    return Center(
-      child: Container(
-        child: Text(
-          'PageView(横)',
-          style: TextStyle(fontSize: 50.0),
-        ),
-      ),
-    );
-  }
-
-  Widget page2() {
-    return Center(
-      child: Container(
-        child: Text(
-          '成功',
-          style: TextStyle(fontSize: 30.0),
-        ),
       ),
     );
   }
