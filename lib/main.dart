@@ -69,6 +69,7 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
+                        color: Colors.deepOrange,
                         icon: const Icon(
                           Icons.settings,
                           color: Colors.black,
@@ -205,15 +206,27 @@ class _MyWidgetState extends State<MyWidget> {
             ),
           ),
           Expanded(
-            child: PageView(
-              controller: controller,
-              onPageChanged: (pageIdx) => controller.animateToPage(pageIdx,
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.elasticIn),
-              children: <Widget>[
-                page1(),
-                page2(),
-              ],
+            child: SizedBox(
+              width: double.infinity,
+              height: 500,
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                    child: PageView(
+                      controller: controller,
+                      onPageChanged: (pageIdx) => controller.animateToPage(
+                          pageIdx,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.elasticIn),
+                      children: <Widget>[
+                        page1(),
+                        page2(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
