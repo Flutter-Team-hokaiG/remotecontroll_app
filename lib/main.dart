@@ -220,7 +220,7 @@ class _MyWidgetState extends State<MyWidget> {
                           duration: const Duration(seconds: 1),
                           curve: Curves.elasticIn),
                       children: <Widget>[
-                        page1(),
+                        Page1(),
                         page2(),
                       ],
                     ),
