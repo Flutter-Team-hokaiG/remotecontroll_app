@@ -24,7 +24,7 @@ class _Page1State extends State<Page1> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('左耳'),
+                const Text('左耳', textScaleFactor: 2),
                 const Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                   child: Text('Slider1の値'),
@@ -33,7 +33,7 @@ class _Page1State extends State<Page1> {
                   width: MediaQuery.of(context).size.width * 0.2,
                   decoration: const BoxDecoration(),
                 ),
-                const Text('右耳'),
+                const Text('右耳', textScaleFactor: 2),
                 const Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                   child: Text('Slider2の値'),
@@ -53,7 +53,7 @@ class _Page1State extends State<Page1> {
                       onPressed: () {
                         // print('Button pressed ...');
                       },
-                      child: Text('大'),
+                      child: Text('大', textScaleFactor: 2),
                     ),
                     Expanded(
                       child: SfSlider.vertical(
@@ -72,7 +72,7 @@ class _Page1State extends State<Page1> {
                       onPressed: () {
                         // print('Button pressed ...');
                       },
-                      child: Text('小'),
+                      child: Text('小', textScaleFactor: 2),
                     ),
                     // StreamBuilder<List<TestRecord>>(
                     //   stream: queryTestRecord(
@@ -143,7 +143,7 @@ class _Page1State extends State<Page1> {
                       onPressed: () {
                         // print('Button pressed ...');
                       },
-                      child: Text('大'),
+                      child: Text('大', textScaleFactor: 2),
                     ),
                     Expanded(
                       child: SfSlider.vertical(
@@ -162,7 +162,7 @@ class _Page1State extends State<Page1> {
                       onPressed: () {
                         // print('Button pressed ...');
                       },
-                      child: Text('小'),
+                      child: Text('小', textScaleFactor: 2),
                     ),
                     // StreamBuilder<List<TestRecord>>(
                     //   stream: queryTestRecord(

@@ -69,21 +69,15 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        color: Colors.deepOrange,
-                        icon: const Icon(
-                          Icons.settings,
-                          color: Colors.black,
-                          size: 20,
-                        ),
+                        icon: const Icon(Icons.settings,
+                            color: Colors.black, size: 30),
                         onPressed: () {},
                       ),
                     ),
                     const Align(
                       alignment: AlignmentDirectional(0, 0.8),
-                      child: Text(
-                        '通常',
-                        style: TextStyle(fontWeight: FontWeight.w800),
-                      ),
+                      child: Text('通常',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ],
                 ),
@@ -93,20 +87,15 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(
-                          Icons.directions_car,
-                          color: Colors.black,
-                          size: 20,
-                        ),
+                        icon: const Icon(Icons.directions_car,
+                            color: Colors.black, size: 30),
                         onPressed: () {},
                       ),
                     ),
                     const Align(
                       alignment: AlignmentDirectional(0, 0.8),
-                      child: Text(
-                        '騒がしい',
-                        style: TextStyle(fontWeight: FontWeight.w800),
-                      ),
+                      child: Text('騒がしい',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ],
                 ),
@@ -116,20 +105,15 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(
-                          Icons.piano_off,
-                          color: Colors.black,
-                          size: 20,
-                        ),
+                        icon: const Icon(Icons.piano_off,
+                            color: Colors.black, size: 30),
                         onPressed: () {},
                       ),
                     ),
                     const Align(
                       alignment: AlignmentDirectional(0, 0.8),
-                      child: Text(
-                        '静か',
-                        style: TextStyle(fontWeight: FontWeight.w800),
-                      ),
+                      child: Text('静か',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ],
                 ),
@@ -139,20 +123,15 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(
-                          Icons.local_restaurant,
-                          color: Colors.black,
-                          size: 20,
-                        ),
+                        icon: const Icon(Icons.local_restaurant,
+                            color: Colors.black, size: 30),
                         onPressed: () {},
                       ),
                     ),
                     const Align(
                       alignment: AlignmentDirectional(0, 0.8),
-                      child: Text(
-                        'レストラン',
-                        style: TextStyle(fontWeight: FontWeight.w800),
-                      ),
+                      child: Text('レストラン',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ],
                 ),
@@ -162,20 +141,15 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(
-                          Icons.record_voice_over,
-                          color: Colors.black,
-                          size: 20,
-                        ),
+                        icon: const Icon(Icons.record_voice_over,
+                            color: Colors.black, size: 30),
                         onPressed: () {},
                       ),
                     ),
                     const Align(
                       alignment: AlignmentDirectional(0, 0.8),
-                      child: Text(
-                        '会話',
-                        style: TextStyle(fontWeight: FontWeight.w800),
-                      ),
+                      child: Text('会話',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ],
                 ),
@@ -185,20 +159,15 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(
-                          Icons.phone_in_talk,
-                          color: Colors.black,
-                          size: 20,
-                        ),
+                        icon: const Icon(Icons.phone_in_talk,
+                            color: Colors.black, size: 30),
                         onPressed: () {},
                       ),
                     ),
                     const Align(
                       alignment: AlignmentDirectional(0, 0.8),
-                      child: Text(
-                        '電話',
-                        style: TextStyle(fontWeight: FontWeight.w800),
-                      ),
+                      child: Text('電話',
+                          style: TextStyle(fontWeight: FontWeight.w800)),
                     ),
                   ],
                 ),
@@ -221,7 +190,7 @@ class _MyWidgetState extends State<MyWidget> {
                           curve: Curves.elasticIn),
                       children: <Widget>[
                         Page1(),
-                        page2(),
+                        Page2(),
                       ],
                     ),
                   ),
