@@ -12,6 +12,8 @@ class _Page3State extends State<Page3> {
   int sliderValue3 = 0;
   int sliderValue4 = 0;
   int sliderValue5 = 0;
+  int _eqvolmax = 5;
+  int _eqvolmin = -5;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,12 @@ class _Page3State extends State<Page3> {
           Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
-                  // print('Button pressed ...');
+                  if (sliderValue3 < _eqvolmax) {
+                    setState(() => sliderValue3++);
+                  }
                 },
                 child: Text('+', textScaleFactor: 2),
               ),
@@ -35,8 +40,8 @@ class _Page3State extends State<Page3> {
                   child: SfSlider.vertical(
                     activeColor: Colors.amber,
                     inactiveColor: const Color(0xFF9E9E9E),
-                    min: -5,
-                    max: 5,
+                    min: _eqvolmin,
+                    max: _eqvolmax,
                     stepSize: 1,
                     value: sliderValue3,
                     onChanged: (newValue) {
@@ -47,7 +52,9 @@ class _Page3State extends State<Page3> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // print('Button pressed ...');
+                  if (sliderValue3 > _eqvolmin) {
+                    setState(() => sliderValue3--);
+                  }
                 },
                 child: Text('‐', textScaleFactor: 2),
               ),
@@ -61,9 +68,12 @@ class _Page3State extends State<Page3> {
           Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              SizedBox(height: 50, child: Text('音響調整', textScaleFactor: 1.5)),
               ElevatedButton(
                 onPressed: () {
-                  // print('Button pressed ...');
+                  if (sliderValue4 < _eqvolmax) {
+                    setState(() => sliderValue4++);
+                  }
                 },
                 child: Text('+', textScaleFactor: 2),
               ),
@@ -73,8 +83,8 @@ class _Page3State extends State<Page3> {
                   child: SfSlider.vertical(
                     activeColor: Colors.amber,
                     inactiveColor: const Color(0xFF9E9E9E),
-                    min: -5,
-                    max: 5,
+                    min: _eqvolmin,
+                    max: _eqvolmax,
                     stepSize: 1,
                     value: sliderValue4,
                     onChanged: (newValue) {
@@ -85,7 +95,9 @@ class _Page3State extends State<Page3> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // print('Button pressed ...');
+                  if (sliderValue4 > _eqvolmin) {
+                    setState(() => sliderValue4--);
+                  }
                 },
                 child: Text('‐', textScaleFactor: 2),
               ),
@@ -99,9 +111,12 @@ class _Page3State extends State<Page3> {
           Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
-                  // print('Button pressed ...');
+                  if (sliderValue5 < _eqvolmax) {
+                    setState(() => sliderValue5++);
+                  }
                 },
                 child: Text('+', textScaleFactor: 2),
               ),
@@ -111,8 +126,8 @@ class _Page3State extends State<Page3> {
                   child: SfSlider.vertical(
                     activeColor: Colors.amber,
                     inactiveColor: const Color(0xFF9E9E9E),
-                    min: -5,
-                    max: 5,
+                    min: _eqvolmin,
+                    max: _eqvolmax,
                     stepSize: 1,
                     value: sliderValue5,
                     onChanged: (newValue) {
@@ -123,7 +138,9 @@ class _Page3State extends State<Page3> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // print('Button pressed ...');
+                  if (sliderValue5 > _eqvolmin) {
+                    setState(() => sliderValue5--);
+                  }
                 },
                 child: Text('‐', textScaleFactor: 2),
               ),

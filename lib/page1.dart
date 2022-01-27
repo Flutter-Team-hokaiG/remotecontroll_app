@@ -11,6 +11,8 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   int sliderValue2 = 0;
   int sliderValue1 = 0;
+  int _volmax = 5;
+  int _volmin = -5;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,9 @@ class _Page1State extends State<Page1> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // print('Button pressed ...');
+                        if (sliderValue1 < _volmax) {
+                          setState(() => sliderValue1++);
+                        }
                       },
                       child: Text('大', textScaleFactor: 2),
                     ),
@@ -59,8 +63,8 @@ class _Page1State extends State<Page1> {
                       child: SfSlider.vertical(
                         activeColor: Colors.amber,
                         inactiveColor: const Color(0xFF9E9E9E),
-                        min: -5,
-                        max: 5,
+                        min: _volmin,
+                        max: _volmax,
                         stepSize: 1,
                         value: sliderValue1,
                         onChanged: (newValue) {
@@ -70,7 +74,9 @@ class _Page1State extends State<Page1> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // print('Button pressed ...');
+                        if (sliderValue1 > _volmin) {
+                          setState(() => sliderValue1--);
+                        }
                       },
                       child: Text('小', textScaleFactor: 2),
                     ),
@@ -141,7 +147,9 @@ class _Page1State extends State<Page1> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // print('Button pressed ...');
+                        if (sliderValue2 < _volmax) {
+                          setState(() => sliderValue2++);
+                        }
                       },
                       child: Text('大', textScaleFactor: 2),
                     ),
@@ -149,8 +157,8 @@ class _Page1State extends State<Page1> {
                       child: SfSlider.vertical(
                         activeColor: Colors.amber,
                         inactiveColor: const Color(0xFF9E9E9E),
-                        min: -5,
-                        max: 5,
+                        min: _volmin,
+                        max: _volmax,
                         stepSize: 1,
                         value: sliderValue2,
                         onChanged: (newValue) {
@@ -160,7 +168,9 @@ class _Page1State extends State<Page1> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // print('Button pressed ...');
+                        if (sliderValue2 > _volmin) {
+                          setState(() => sliderValue2--);
+                        }
                       },
                       child: Text('小', textScaleFactor: 2),
                     ),
@@ -309,7 +319,8 @@ class _Page1State extends State<Page1> {
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 0),
                     child: ElevatedButton(
                       onPressed: () {
-                        // print('Button pressed ...');
+                        setState(() => sliderValue1 = 0);
+                        setState(() => sliderValue2 = 0);
                       },
                       child: Text('元に戻す'),
                     ),
