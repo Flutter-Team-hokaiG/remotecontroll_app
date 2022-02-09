@@ -22,8 +22,8 @@ class MyWidget extends StatefulWidget {
 
 class _MyWidgetState extends State<MyWidget> {
   late PageController controller;
-  int sliderValue2 = 0;
   int sliderValue1 = 0;
+  int sliderValue2 = 0;
   int _volmax = 5;
   int _volmin = -5;
   List<bool> isSelected = List.generate(3, (index) => false);
@@ -214,23 +214,17 @@ class _MyWidgetState extends State<MyWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  Spacer(flex: 6),
                                   const Text('左耳', textScaleFactor: 2),
-                                  const Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 0, 0, 0),
-                                    child: Text('Slider1の値'),
-                                  ),
-                                  Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    decoration: const BoxDecoration(),
-                                  ),
+                                  Spacer(flex: 1),
+                                  Text(sliderValue1.toString(),
+                                      textScaleFactor: 2.5),
+                                  Spacer(flex: 6),
                                   const Text('右耳', textScaleFactor: 2),
-                                  const Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 0, 0, 0),
-                                    child: Text('Slider2の値'),
-                                  ),
+                                  Spacer(flex: 1),
+                                  Text(sliderValue2.toString(),
+                                      textScaleFactor: 2.5),
+                                  Spacer(flex: 6),
                                 ],
                               ),
                             ),
