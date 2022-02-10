@@ -830,33 +830,50 @@ class _MyWidgetState extends State<MyWidget> {
                                   },
                                 ),
                                 SizedBox(width: 100),
-                                ToggleButtons(
-                                  highlightColor: Colors.redAccent,
-                                  fillColor: Colors.red[200],
-                                  color: Colors.red[200],
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderColor: Colors.red[200],
-                                  borderWidth: 3,
-                                  selectedBorderColor: Colors.redAccent,
-                                  disabledColor: Colors.grey[800],
-                                  isSelected: isSelected2,
-                                  children: const <Widget>[
-                                    Icon(Icons.sensors),
-                                    Icon(Icons.sensors_off),
-                                  ],
-                                  onPressed: (int index) {
-                                    setState(() {
-                                      for (int buttonIndex = 0;
-                                          buttonIndex < isSelected2.length;
-                                          buttonIndex++) {
-                                        if (buttonIndex == index) {
-                                          isSelected2[buttonIndex] = true;
-                                        } else {
-                                          isSelected2[buttonIndex] = false;
-                                        }
-                                      }
-                                    });
-                                  },
+                                // ToggleButtons(
+                                //   highlightColor: Colors.redAccent,
+                                //   fillColor: Colors.red[200],
+                                //   color: Colors.red[200],
+                                //   borderRadius: BorderRadius.circular(20),
+                                //   borderColor: Colors.red[200],
+                                //   borderWidth: 3,
+                                //   selectedBorderColor: Colors.redAccent,
+                                //   disabledColor: Colors.grey[800],
+                                //   isSelected: isSelected2,
+                                //   children: const <Widget>[
+                                //     Icon(Icons.sensors),
+                                //     Icon(Icons.sensors_off),
+                                //   ],
+                                //   onPressed: (int index) {
+                                //     setState(() {
+                                //       for (int buttonIndex = 0;
+                                //           buttonIndex < isSelected2.length;
+                                //           buttonIndex++) {
+                                //         if (buttonIndex == index) {
+                                //           isSelected2[buttonIndex] = true;
+                                //         } else {
+                                //           isSelected2[buttonIndex] = false;
+                                //         }
+                                //       }
+                                //     });
+                                //   },
+                                // ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0, 0, 20, 0),
+                                  child: IconButton(
+                                    iconSize: 40,
+                                    icon: Icon(Icons.change_circle,
+                                        color: Colors.blue, size: 40),
+                                    onPressed: () {
+                                      setState(() => sliderValue3 = 0);
+                                      setState(() => sliderValue4 = 0);
+                                      setState(() => sliderValue5 = 0);
+                                      setState(() => _nr = '切');
+                                      setState(() => _pns = '切');
+                                      setState(() => _zan = '切');
+                                    },
+                                  ),
                                 ),
                               ],
                             ),
