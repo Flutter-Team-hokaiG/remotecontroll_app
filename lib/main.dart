@@ -22,6 +22,7 @@ class MyWidget extends StatefulWidget {
 
 class _MyWidgetState extends State<MyWidget> {
   late PageController controller;
+  int _memory = 0;
   int sliderValue1 = 0;
   int sliderValue2 = 0;
   int _volmax = 5;
@@ -63,6 +64,7 @@ class _MyWidgetState extends State<MyWidget> {
       ),
       body: Column(
         children: [
+          Text('メモリ：$_memory'),
           Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
             child: GridView(
@@ -83,9 +85,12 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(Icons.settings,
-                            color: Colors.black, size: 30),
-                        onPressed: () {},
+                        icon: Icon(Icons.settings,
+                            color: _memory == 0 ? Colors.red : Colors.black,
+                            size: 30),
+                        onPressed: () {
+                          setState(() => _memory = 0);
+                        },
                       ),
                     ),
                     const Align(
@@ -101,9 +106,12 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(Icons.directions_car,
-                            color: Colors.black, size: 30),
-                        onPressed: () {},
+                        icon: Icon(Icons.directions_car,
+                            color: _memory == 1 ? Colors.red : Colors.black,
+                            size: 30),
+                        onPressed: () {
+                          setState(() => _memory = 1);
+                        },
                       ),
                     ),
                     const Align(
@@ -119,9 +127,12 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(Icons.piano_off,
-                            color: Colors.black, size: 30),
-                        onPressed: () {},
+                        icon: Icon(Icons.piano_off,
+                            color: _memory == 2 ? Colors.red : Colors.black,
+                            size: 30),
+                        onPressed: () {
+                          setState(() => _memory = 2);
+                        },
                       ),
                     ),
                     const Align(
@@ -137,9 +148,12 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(Icons.local_restaurant,
-                            color: Colors.black, size: 30),
-                        onPressed: () {},
+                        icon: Icon(Icons.local_restaurant,
+                            color: _memory == 3 ? Colors.red : Colors.black,
+                            size: 30),
+                        onPressed: () {
+                          setState(() => _memory = 3);
+                        },
                       ),
                     ),
                     const Align(
@@ -155,9 +169,12 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(Icons.record_voice_over,
-                            color: Colors.black, size: 30),
-                        onPressed: () {},
+                        icon: Icon(Icons.record_voice_over,
+                            color: _memory == 4 ? Colors.red : Colors.black,
+                            size: 30),
+                        onPressed: () {
+                          setState(() => _memory = 4);
+                        },
                       ),
                     ),
                     const Align(
@@ -173,9 +190,12 @@ class _MyWidgetState extends State<MyWidget> {
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
                         iconSize: 50,
-                        icon: const Icon(Icons.phone_in_talk,
-                            color: Colors.black, size: 30),
-                        onPressed: () {},
+                        icon: Icon(Icons.phone_in_talk,
+                            color: _memory == 5 ? Colors.red : Colors.black,
+                            size: 30),
+                        onPressed: () {
+                          setState(() => _memory = 5);
+                        },
                       ),
                     ),
                     const Align(
