@@ -23,10 +23,11 @@ class MyWidget extends StatefulWidget {
 class _MyWidgetState extends State<MyWidget> {
   late PageController controller;
   int _memory = 0;
-  List<int> sliderValue1 = [0, 0, 0, 0, 0, 0];
-  List<int> sliderValue2 = [0, 0, 0, 0, 0, 0];
-  int _volmax = 5;
-  int _volmin = -5;
+  List<int> initialValue = [16, 16, 16, 16, 16, 16];
+  List<int> sliderValue1 = [16, 16, 16, 16, 16, 16];
+  List<int> sliderValue2 = [16, 16, 16, 16, 16, 16];
+  int _volmax = 32;
+  int _volmin = 0;
   List<bool> isSelected = List.generate(3, (index) => false);
   List<bool> isSelected2 = List.generate(2, (index) => false);
   List<int> sliderValue3 = [0, 0, 0, 0, 0, 0];
@@ -50,6 +51,27 @@ class _MyWidgetState extends State<MyWidget> {
     super.dispose();
   }
 
+  void popupMenuSelected(selectedMenu) {
+    switch (selectedMenu) {
+      case 1:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) {
+            return const SettingPage1();
+          }),
+        );
+        break;
+      case 2:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) {
+            return const SettingPage2();
+          }),
+        );
+        break;
+      default:
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +81,19 @@ class _MyWidgetState extends State<MyWidget> {
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
         actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.favorite),
+          PopupMenuButton(
+            icon: Icon(Icons.account_box_rounded, size: 30),
+            onSelected: popupMenuSelected, //実行される関数名
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+              const PopupMenuItem(
+                value: 1, //valueを設定
+                child: Text('困ったときは'),
+              ),
+              const PopupMenuItem(
+                value: 2, //valueを設定
+                child: Text('装用効果確認'),
+              ),
+            ],
           ),
         ],
       ),
@@ -342,39 +374,22 @@ class _MyWidgetState extends State<MyWidget> {
                                 ],
                               ),
                             ),
-                            Align(
-                              alignment: const AlignmentDirectional(0.5, 0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0, 5, 0, 0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20, 0, 0, 0),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0, 0, 20, 0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            sliderValue1 = [0, 0, 0, 0, 0, 0];
-                                          });
-                                          setState(() {
-                                            sliderValue2 = [0, 0, 0, 0, 0, 0];
-                                          });
-                                        },
-                                        child: Text('元に戻す'),
-                                      ),
-                                    ),
-                                  ],
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      sliderValue1 = initialValue;
+                                      sliderValue2 = initialValue;
+                                    });
+                                  },
+                                  child: Text('元に戻す'),
                                 ),
-                              ),
+                                SizedBox(width: 20),
+                              ],
                             ),
                           ],
                         ),
@@ -885,6 +900,29 @@ class _MyWidgetState extends State<MyWidget> {
           ),
         );
       },
+    );
+  }
+}
+
+class SettingPage1 extends StatelessWidget {
+  const SettingPage1({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('困ったときは')),
+      body: Center(child: Icon(Icons.info_outline, size: 100)),
+    );
+  }
+}
+
+// サードページ(遷移先)
+class SettingPage2 extends StatelessWidget {
+  const SettingPage2({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('装用効果確認')),
+      body: Center(child: Icon(Icons.tour_outlined, size: 100)),
     );
   }
 }
