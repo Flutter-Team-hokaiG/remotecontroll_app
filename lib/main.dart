@@ -23,8 +23,8 @@ class MyWidget extends StatefulWidget {
 class _MyWidgetState extends State<MyWidget> {
   late PageController controller;
   int _memory = 0;
-  int sliderValue1 = 0;
-  int sliderValue2 = 0;
+  List<int> sliderValue1 = [0, 0, 0, 0, 0, 0];
+  List<int> sliderValue2 = [0, 0, 0, 0, 0, 0];
   int _volmax = 5;
   int _volmin = -5;
   List<bool> isSelected = List.generate(3, (index) => false);
@@ -53,14 +53,17 @@ class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(20),
-        child: AppBar(
-          backgroundColor: Colors.red,
-          automaticallyImplyLeading: false,
-          actions: const [],
-          elevation: 8,
-        ),
+      appBar: AppBar(
+        leading: Icon(Icons.menu),
+        title: const Text('リモコンApp'),
+        backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.favorite),
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -237,12 +240,12 @@ class _MyWidgetState extends State<MyWidget> {
                                   Spacer(flex: 6),
                                   const Text('左耳', textScaleFactor: 2),
                                   Spacer(flex: 1),
-                                  Text(sliderValue1.toString(),
+                                  Text(sliderValue1[_memory].toString(),
                                       textScaleFactor: 2.5),
                                   Spacer(flex: 6),
                                   const Text('右耳', textScaleFactor: 2),
                                   Spacer(flex: 1),
-                                  Text(sliderValue2.toString(),
+                                  Text(sliderValue2[_memory].toString(),
                                       textScaleFactor: 2.5),
                                   Spacer(flex: 6),
                                 ],
@@ -258,8 +261,9 @@ class _MyWidgetState extends State<MyWidget> {
                                     children: [
                                       ElevatedButton(
                                         onPressed: () {
-                                          if (sliderValue1 < _volmax) {
-                                            setState(() => sliderValue1++);
+                                          if (sliderValue1[_memory] < _volmax) {
+                                            setState(
+                                                () => sliderValue1[_memory]++);
                                           }
                                         },
                                         child: Text('大', textScaleFactor: 2),
@@ -272,17 +276,19 @@ class _MyWidgetState extends State<MyWidget> {
                                           min: _volmin,
                                           max: _volmax,
                                           stepSize: 1,
-                                          value: sliderValue1,
+                                          value: sliderValue1[_memory],
                                           onChanged: (newValue) {
-                                            setState(
-                                                () => sliderValue1 = newValue);
+                                            setState(() =>
+                                                sliderValue1[_memory] =
+                                                    newValue);
                                           },
                                         ),
                                       ),
                                       ElevatedButton(
                                         onPressed: () {
-                                          if (sliderValue1 > _volmin) {
-                                            setState(() => sliderValue1--);
+                                          if (sliderValue1[_memory] > _volmin) {
+                                            setState(
+                                                () => sliderValue1[_memory]--);
                                           }
                                         },
                                         child: Text('小', textScaleFactor: 2),
@@ -299,8 +305,9 @@ class _MyWidgetState extends State<MyWidget> {
                                     children: [
                                       ElevatedButton(
                                         onPressed: () {
-                                          if (sliderValue2 < _volmax) {
-                                            setState(() => sliderValue2++);
+                                          if (sliderValue2[_memory] < _volmax) {
+                                            setState(
+                                                () => sliderValue2[_memory]++);
                                           }
                                         },
                                         child: Text('大', textScaleFactor: 2),
@@ -313,17 +320,19 @@ class _MyWidgetState extends State<MyWidget> {
                                           min: _volmin,
                                           max: _volmax,
                                           stepSize: 1,
-                                          value: sliderValue2,
+                                          value: sliderValue2[_memory],
                                           onChanged: (newValue) {
-                                            setState(
-                                                () => sliderValue2 = newValue);
+                                            setState(() =>
+                                                sliderValue2[_memory] =
+                                                    newValue);
                                           },
                                         ),
                                       ),
                                       ElevatedButton(
                                         onPressed: () {
-                                          if (sliderValue2 > _volmin) {
-                                            setState(() => sliderValue2--);
+                                          if (sliderValue2[_memory] > _volmin) {
+                                            setState(
+                                                () => sliderValue2[_memory]--);
                                           }
                                         },
                                         child: Text('小', textScaleFactor: 2),
@@ -353,8 +362,12 @@ class _MyWidgetState extends State<MyWidget> {
                                               0, 0, 20, 0),
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          setState(() => sliderValue1 = 0);
-                                          setState(() => sliderValue2 = 0);
+                                          setState(() {
+                                            sliderValue1 = [0, 0, 0, 0, 0, 0];
+                                          });
+                                          setState(() {
+                                            sliderValue2 = [0, 0, 0, 0, 0, 0];
+                                          });
                                         },
                                         child: Text('元に戻す'),
                                       ),
