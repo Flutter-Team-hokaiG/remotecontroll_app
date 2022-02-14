@@ -29,15 +29,15 @@ class _MyWidgetState extends State<MyWidget> {
   int _volmin = -5;
   List<bool> isSelected = List.generate(3, (index) => false);
   List<bool> isSelected2 = List.generate(2, (index) => false);
-  int sliderValue3 = 0;
-  int sliderValue4 = 0;
-  int sliderValue5 = 0;
+  List<int> sliderValue3 = [0, 0, 0, 0, 0, 0];
+  List<int> sliderValue4 = [0, 0, 0, 0, 0, 0];
+  List<int> sliderValue5 = [0, 0, 0, 0, 0, 0];
   int _eqvolmax = 5;
   int _eqvolmin = -5;
   final _formKey = GlobalKey<FormState>();
-  String _nr = '切';
-  String _pns = '切';
-  String _zan = '切';
+  List<String> _nr = ['切', '切', '切', '切', '切', '切'];
+  List<String> _pns = ['切', '切', '切', '切', '切', '切'];
+  List<String> _zan = ['切', '切', '切', '切', '切', '切'];
 
   @override
   void initState() {
@@ -400,10 +400,10 @@ class _MyWidgetState extends State<MyWidget> {
                                               SizedBox(height: 50),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  if (sliderValue3 <
+                                                  if (sliderValue3[_memory] <
                                                       _eqvolmax) {
-                                                    setState(
-                                                        () => sliderValue3++);
+                                                    setState(() => sliderValue3[
+                                                        _memory]++);
                                                   }
                                                 },
                                                 child: Text('+',
@@ -419,10 +419,12 @@ class _MyWidgetState extends State<MyWidget> {
                                                     min: _eqvolmin,
                                                     max: _eqvolmax,
                                                     stepSize: 1,
-                                                    value: sliderValue3,
+                                                    value:
+                                                        sliderValue3[_memory],
                                                     onChanged: (newValue) {
                                                       setState(() =>
-                                                          sliderValue3 =
+                                                          sliderValue3[
+                                                                  _memory] =
                                                               newValue);
                                                     },
                                                   ),
@@ -430,10 +432,10 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  if (sliderValue3 >
+                                                  if (sliderValue3[_memory] >
                                                       _eqvolmin) {
-                                                    setState(
-                                                        () => sliderValue3--);
+                                                    setState(() => sliderValue3[
+                                                        _memory]--);
                                                   }
                                                 },
                                                 child: Text('‐',
@@ -459,10 +461,10 @@ class _MyWidgetState extends State<MyWidget> {
                                                       textScaleFactor: 1.5)),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  if (sliderValue4 <
+                                                  if (sliderValue4[_memory] <
                                                       _eqvolmax) {
-                                                    setState(
-                                                        () => sliderValue4++);
+                                                    setState(() => sliderValue4[
+                                                        _memory]++);
                                                   }
                                                 },
                                                 child: Text('+',
@@ -478,10 +480,12 @@ class _MyWidgetState extends State<MyWidget> {
                                                     min: _eqvolmin,
                                                     max: _eqvolmax,
                                                     stepSize: 1,
-                                                    value: sliderValue4,
+                                                    value:
+                                                        sliderValue4[_memory],
                                                     onChanged: (newValue) {
                                                       setState(() =>
-                                                          sliderValue4 =
+                                                          sliderValue4[
+                                                                  _memory] =
                                                               newValue);
                                                     },
                                                   ),
@@ -489,10 +493,10 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  if (sliderValue4 >
+                                                  if (sliderValue4[_memory] >
                                                       _eqvolmin) {
-                                                    setState(
-                                                        () => sliderValue4--);
+                                                    setState(() => sliderValue4[
+                                                        _memory]--);
                                                   }
                                                 },
                                                 child: Text('‐',
@@ -515,10 +519,10 @@ class _MyWidgetState extends State<MyWidget> {
                                               SizedBox(height: 50),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  if (sliderValue5 <
+                                                  if (sliderValue5[_memory] <
                                                       _eqvolmax) {
-                                                    setState(
-                                                        () => sliderValue5++);
+                                                    setState(() => sliderValue5[
+                                                        _memory]++);
                                                   }
                                                 },
                                                 child: Text('+',
@@ -534,10 +538,12 @@ class _MyWidgetState extends State<MyWidget> {
                                                     min: _eqvolmin,
                                                     max: _eqvolmax,
                                                     stepSize: 1,
-                                                    value: sliderValue5,
+                                                    value:
+                                                        sliderValue5[_memory],
                                                     onChanged: (newValue) {
                                                       setState(() =>
-                                                          sliderValue5 =
+                                                          sliderValue5[
+                                                                  _memory] =
                                                               newValue);
                                                     },
                                                   ),
@@ -545,10 +551,10 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                               ElevatedButton(
                                                 onPressed: () {
-                                                  if (sliderValue5 >
+                                                  if (sliderValue5[_memory] >
                                                       _eqvolmin) {
-                                                    setState(
-                                                        () => sliderValue5--);
+                                                    setState(() => sliderValue5[
+                                                        _memory]--);
                                                   }
                                                 },
                                                 child: Text('‐',
@@ -584,73 +590,9 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                             ),
                                             onPressed: () {
-                                              showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                    content: Form(
-                                                      key: _formKey,
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: <Widget>[
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("弱"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _nr = '弱');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("中"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _nr = '中');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("強"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _nr = '強');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                              );
+                                              _showDialogNR();
                                             },
-                                            child: Text('騒音抑制：$_nr',
+                                            child: Text('騒音抑制：${_nr[_memory]}',
                                                 textScaleFactor: 2),
                                           ),
                                           SizedBox(height: 50),
@@ -665,73 +607,10 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                             ),
                                             onPressed: () {
-                                              showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                    content: Form(
-                                                      key: _formKey,
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: <Widget>[
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("弱"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _pns = '弱');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("中"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _pns = '中');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("強"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _pns = '強');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                              );
+                                              _showDialogPNS();
                                             },
-                                            child: Text('突発音抑制：$_pns',
+                                            child: Text(
+                                                '突発音抑制：${_pns[_memory]}',
                                                 textScaleFactor: 2),
                                           ),
                                           SizedBox(height: 50),
@@ -746,57 +625,9 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                             ),
                                             onPressed: () {
-                                              showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return AlertDialog(
-                                                    content: Form(
-                                                      key: _formKey,
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: <Widget>[
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("切"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _zan = '切');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child:
-                                                                ElevatedButton(
-                                                              child: Text("入"),
-                                                              onPressed: () {
-                                                                setState(() =>
-                                                                    _zan = '入');
-                                                                Navigator.of(
-                                                                        context)
-                                                                    .pop();
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                              );
+                                              _showDialogZAN();
                                             },
-                                            child: Text('残響抑制：$_zan',
+                                            child: Text('残響抑制：${_zan[_memory]}',
                                                 textScaleFactor: 2),
                                           ),
                                         ],
@@ -885,6 +716,175 @@ class _MyWidgetState extends State<MyWidget> {
           ),
         ],
       ),
+    );
+  }
+
+  _showDialogNR() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          insetPadding: EdgeInsets.all(20),
+          title: Text("騒音抑制"),
+          content: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ElevatedButton(
+                      child: Text("切"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '切');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text("弱1"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '弱1');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text("弱2"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '弱2');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text("弱3"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '弱3');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ElevatedButton(
+                      child: Text("中1"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '中1');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text("中2"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '中2');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text("強1"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '強1');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text("強2"),
+                      onPressed: () {
+                        setState(() => _nr[_memory] = '強2');
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  _showDialogPNS() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("突発音抑制"),
+          content: Form(
+            key: _formKey,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                ElevatedButton(
+                  child: Text("切"),
+                  onPressed: () {
+                    setState(() => _pns[_memory] = '切');
+                    Navigator.of(context).pop();
+                  },
+                ),
+                ElevatedButton(
+                  child: Text("弱"),
+                  onPressed: () {
+                    setState(() => _pns[_memory] = '弱');
+                    Navigator.of(context).pop();
+                  },
+                ),
+                ElevatedButton(
+                  child: Text("中"),
+                  onPressed: () {
+                    setState(() => _pns[_memory] = '中');
+                    Navigator.of(context).pop();
+                  },
+                ),
+                ElevatedButton(
+                  child: Text("強"),
+                  onPressed: () {
+                    setState(() => _pns[_memory] = '強');
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  _showDialogZAN() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("残響抑制"),
+          content: Form(
+            key: _formKey,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                ElevatedButton(
+                  child: Text("切"),
+                  onPressed: () {
+                    setState(() => _zan[_memory] = '切');
+                    Navigator.of(context).pop();
+                  },
+                ),
+                ElevatedButton(
+                  child: Text("入"),
+                  onPressed: () {
+                    setState(() => _zan[_memory] = '入');
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
