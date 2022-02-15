@@ -1,3 +1,5 @@
+// import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
@@ -23,24 +25,63 @@ class MyWidget extends StatefulWidget {
 class _MyWidgetState extends State<MyWidget> {
   late PageController controller;
   int _memory = 0;
-  List<int> initialValue = [16, 16, 16, 16, 16, 16];
-  List<int> sliderValue1 = [16, 16, 16, 16, 16, 16];
-  List<int> sliderValue2 = [16, 16, 16, 16, 16, 16];
-  int _volmax = 32;
-  int _volmin = 0;
+  List<int> initialValue = [16, 16, 16, 16, 16, 16]; // [元に戻す]の値
+  List<int> sliderValue1 = [16, 16, 16, 16, 16, 16]; // メインボリューム左
+  List<int> sliderValue2 = [16, 16, 16, 16, 16, 16]; // メインボリューム右
+  int _volmax = 32; // メインボリューム最大
+  int _volmin = 0; // メインボリューム最小
   // List<bool> isSelected1 = List.generate(3, (index) => false);
   // List<bool> isSelected2 = List.generate(2, (index) => false);
-  List<bool> isSelected1 = [false, true, false];
-  List<bool> isSelected2 = [true, false];
-  List<int> sliderValueb1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  List<int> sliderValueb2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  List<int> sliderValueb3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  int _eqvolmax = 5;
-  int _eqvolmin = -5;
+  List<bool> isSelected1 = [false, true, false]; // 片耳・両耳ボタン
+  List<bool> isSelected2 = [true, false]; // ミュート用ボタン
+  List<int> sliderValueb1 = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]; // 微調整ボリューム低域（最初の6つが左、後ろの6つが右）
+  List<int> sliderValueb2 = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]; // 微調整ボリューム中域（最初の6つが左、後ろの6つが右）
+  List<int> sliderValueb3 = [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]; // 微調整ボリューム高域（最初の6つが左、後ろの6つが右）
+  int _eqvolmax = 5; // 微調整ボリューム最大
+  int _eqvolmin = -5; // 微調整ボリューム最小
   final _formKey = GlobalKey<FormState>();
-  List<String> _nr = ['切', '切', '切', '切', '切', '切'];
-  List<String> _pns = ['切', '切', '切', '切', '切', '切'];
-  List<String> _zan = ['切', '切', '切', '切', '切', '切'];
+  List<String> _nr = ['切', '切', '切', '切', '切', '切']; // 微調整NR
+  List<String> _pns = ['切', '切', '切', '切', '切', '切']; // 微調整PNS
+  List<String> _zan = ['切', '切', '切', '切', '切', '切']; // 微調整残響抑制
 
   @override
   void initState() {
@@ -55,14 +96,14 @@ class _MyWidgetState extends State<MyWidget> {
 
   void popupMenuSelected(selectedMenu) {
     switch (selectedMenu) {
-      case 1:
+      case 1: // SettingPage1へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage1();
           }),
         );
         break;
-      case 2:
+      case 2: // SettingPage2へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage2();
@@ -410,21 +451,9 @@ class _MyWidgetState extends State<MyWidget> {
                                             MainAxisAlignment.center,
                                         children: [
                                           _ediSlider1(),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.05,
-                                            decoration: const BoxDecoration(),
-                                          ),
+                                          SizedBox(width: 10),
                                           _ediSlider2(),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.05,
-                                            decoration: const BoxDecoration(),
-                                          ),
+                                          SizedBox(width: 10),
                                           _ediSlider3(),
                                         ],
                                       ),
@@ -1084,13 +1113,98 @@ class _MyWidgetState extends State<MyWidget> {
   }
 }
 
-class SettingPage1 extends StatelessWidget {
+class SettingPage1 extends StatefulWidget {
   const SettingPage1({Key? key}) : super(key: key);
+  @override
+  State<SettingPage1> createState() => _SettingPage1State();
+}
+
+class _SettingPage1State extends State<SettingPage1> {
+  String _score = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('困ったときは')),
-      body: Center(child: Icon(Icons.info_outline, size: 100)),
+      body: Column(
+        children: [
+          Container(child: Text("$_score", textScaleFactor: 3), height: 200),
+          Row(
+            children: [
+              Spacer(),
+              FloatingActionButton(
+                shape: RoundedRectangleBorder(),
+                onPressed: () {
+                  setState(() => _score = _score + "左");
+                },
+                child: Icon(Icons.arrow_left, size: 40),
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FloatingActionButton(
+                    shape: RoundedRectangleBorder(),
+                    onPressed: () {
+                      setState(() => _score = _score + "上");
+                    },
+                    child: Icon(Icons.arrow_drop_up, size: 40),
+                  ),
+                  SizedBox(height: 60),
+                  FloatingActionButton(
+                    shape: RoundedRectangleBorder(),
+                    onPressed: () {
+                      setState(() => _score = _score + "下");
+                    },
+                    child: Icon(Icons.arrow_drop_down, size: 40),
+                  ),
+                ],
+              ),
+              FloatingActionButton(
+                  shape: RoundedRectangleBorder(),
+                  onPressed: () {
+                    setState(() => _score = _score + "右");
+                  },
+                  child: Icon(Icons.arrow_right, size: 40)),
+              Spacer(),
+              FloatingActionButton(
+                  onPressed: () {
+                    setState(() => _score = _score + "Y");
+                  },
+                  child: Text('Y', textScaleFactor: 2.5)),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  FloatingActionButton(
+                      onPressed: () {
+                        setState(() => _score = _score + "X");
+                      },
+                      child: Text('X', textScaleFactor: 2.5)),
+                  SizedBox(height: 40),
+                  FloatingActionButton(
+                      onPressed: () {
+                        setState(() => _score = _score + "B");
+                      },
+                      child: Text('B', textScaleFactor: 2.5)),
+                ],
+              ),
+              FloatingActionButton(
+                  onPressed: () {
+                    setState(() => _score = _score + "A");
+                  },
+                  child: Text('A', textScaleFactor: 2.5)),
+              Spacer(),
+            ],
+          ),
+          Container(
+            height: 200,
+            child: (() {
+              if (_score == '上上下下左右左右BA') {
+                return Center(
+                    child: Text("中野さん\nありがとうございました", textScaleFactor: 3));
+              }
+            })(),
+          ),
+        ],
+      ),
     );
   }
 }
