@@ -32,9 +32,9 @@ class _MyWidgetState extends State<MyWidget> {
   // List<bool> isSelected2 = List.generate(2, (index) => false);
   List<bool> isSelected1 = [false, true, false];
   List<bool> isSelected2 = [true, false];
-  List<int> sliderValue3 = [0, 0, 0, 0, 0, 0];
-  List<int> sliderValue4 = [0, 0, 0, 0, 0, 0];
-  List<int> sliderValue5 = [0, 0, 0, 0, 0, 0];
+  List<int> sliderValueb1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  List<int> sliderValueb2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  List<int> sliderValueb3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   int _eqvolmax = 5;
   int _eqvolmin = -5;
   final _formKey = GlobalKey<FormState>();
@@ -305,8 +305,7 @@ class _MyWidgetState extends State<MyWidget> {
                                       Expanded(
                                         child: SfSlider.vertical(
                                           activeColor: Colors.amber,
-                                          inactiveColor:
-                                              const Color(0xFF9E9E9E),
+                                          inactiveColor: Colors.grey[400],
                                           min: _volmin,
                                           max: _volmax,
                                           stepSize: 1,
@@ -349,8 +348,7 @@ class _MyWidgetState extends State<MyWidget> {
                                       Expanded(
                                         child: SfSlider.vertical(
                                           activeColor: Colors.amber,
-                                          inactiveColor:
-                                              const Color(0xFF9E9E9E),
+                                          inactiveColor: Colors.grey[400],
                                           min: _volmin,
                                           max: _volmax,
                                           stepSize: 1,
@@ -411,80 +409,7 @@ class _MyWidgetState extends State<MyWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              SizedBox(height: 50),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  if (sliderValue3[_memory] <
-                                                      _eqvolmax) {
-                                                    setState(() => sliderValue3[
-                                                        _memory]++);
-                                                  }
-                                                },
-                                                child: Text('+',
-                                                    textScaleFactor: 2),
-                                              ),
-                                              Expanded(
-                                                child: SizedBox(
-                                                  width: 100,
-                                                  child: Row(
-                                                    children: [
-                                                      SfSlider.vertical(
-                                                        activeColor:
-                                                            Colors.blue,
-                                                        inactiveColor:
-                                                            const Color(
-                                                                0xFF9E9E9E),
-                                                        min: _eqvolmin,
-                                                        max: _eqvolmax,
-                                                        stepSize: 1,
-                                                        value: sliderValue3[
-                                                            _memory],
-                                                        onChanged: (newValue) {
-                                                          setState(() =>
-                                                              sliderValue3[
-                                                                      _memory] =
-                                                                  newValue);
-                                                        },
-                                                      ),
-                                                      SfSlider.vertical(
-                                                        activeColor: Colors.red,
-                                                        inactiveColor:
-                                                            const Color(
-                                                                0xFF9E9E9E),
-                                                        min: _eqvolmin,
-                                                        max: _eqvolmax,
-                                                        stepSize: 1,
-                                                        value: sliderValue3[
-                                                            _memory],
-                                                        onChanged: (newValue) {
-                                                          setState(() =>
-                                                              sliderValue3[
-                                                                      _memory] =
-                                                                  newValue);
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  if (sliderValue3[_memory] >
-                                                      _eqvolmin) {
-                                                    setState(() => sliderValue3[
-                                                        _memory]--);
-                                                  }
-                                                },
-                                                child: Text('‐',
-                                                    textScaleFactor: 2),
-                                              ),
-                                              const Text('低',
-                                                  textScaleFactor: 1.5),
-                                            ],
-                                          ),
+                                          _ediSlider1(),
                                           Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -492,83 +417,7 @@ class _MyWidgetState extends State<MyWidget> {
                                                 0.05,
                                             decoration: const BoxDecoration(),
                                           ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              SizedBox(
-                                                  height: 50,
-                                                  child: Text('音響調整',
-                                                      textScaleFactor: 1.5)),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  if (sliderValue4[_memory] <
-                                                      _eqvolmax) {
-                                                    setState(() => sliderValue4[
-                                                        _memory]++);
-                                                  }
-                                                },
-                                                child: Text('+',
-                                                    textScaleFactor: 2),
-                                              ),
-                                              Expanded(
-                                                child: SizedBox(
-                                                  width: 100,
-                                                  child: Row(
-                                                    children: [
-                                                      SfSlider.vertical(
-                                                        activeColor:
-                                                            Colors.blue,
-                                                        inactiveColor:
-                                                            const Color(
-                                                                0xFF9E9E9E),
-                                                        min: _eqvolmin,
-                                                        max: _eqvolmax,
-                                                        stepSize: 1,
-                                                        value: sliderValue4[
-                                                            _memory],
-                                                        onChanged: (newValue) {
-                                                          setState(() =>
-                                                              sliderValue4[
-                                                                      _memory] =
-                                                                  newValue);
-                                                        },
-                                                      ),
-                                                      SfSlider.vertical(
-                                                        activeColor: Colors.red,
-                                                        inactiveColor:
-                                                            const Color(
-                                                                0xFF9E9E9E),
-                                                        min: _eqvolmin,
-                                                        max: _eqvolmax,
-                                                        stepSize: 1,
-                                                        value: sliderValue4[
-                                                            _memory],
-                                                        onChanged: (newValue) {
-                                                          setState(() =>
-                                                              sliderValue4[
-                                                                      _memory] =
-                                                                  newValue);
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  if (sliderValue4[_memory] >
-                                                      _eqvolmin) {
-                                                    setState(() => sliderValue4[
-                                                        _memory]--);
-                                                  }
-                                                },
-                                                child: Text('‐',
-                                                    textScaleFactor: 2),
-                                              ),
-                                              const Text('中',
-                                                  textScaleFactor: 1.5),
-                                            ],
-                                          ),
+                                          _ediSlider2(),
                                           Container(
                                             width: MediaQuery.of(context)
                                                     .size
@@ -576,80 +425,7 @@ class _MyWidgetState extends State<MyWidget> {
                                                 0.05,
                                             decoration: const BoxDecoration(),
                                           ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              SizedBox(height: 50),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  if (sliderValue5[_memory] <
-                                                      _eqvolmax) {
-                                                    setState(() => sliderValue5[
-                                                        _memory]++);
-                                                  }
-                                                },
-                                                child: Text('+',
-                                                    textScaleFactor: 2),
-                                              ),
-                                              Expanded(
-                                                child: SizedBox(
-                                                  width: 100,
-                                                  child: Row(
-                                                    children: [
-                                                      SfSlider.vertical(
-                                                        activeColor:
-                                                            Colors.blue,
-                                                        inactiveColor:
-                                                            const Color(
-                                                                0xFF9E9E9E),
-                                                        min: _eqvolmin,
-                                                        max: _eqvolmax,
-                                                        stepSize: 1,
-                                                        value: sliderValue5[
-                                                            _memory],
-                                                        onChanged: (newValue) {
-                                                          setState(() =>
-                                                              sliderValue5[
-                                                                      _memory] =
-                                                                  newValue);
-                                                        },
-                                                      ),
-                                                      SfSlider.vertical(
-                                                        activeColor: Colors.red,
-                                                        inactiveColor:
-                                                            const Color(
-                                                                0xFF9E9E9E),
-                                                        min: _eqvolmin,
-                                                        max: _eqvolmax,
-                                                        stepSize: 1,
-                                                        value: sliderValue5[
-                                                            _memory],
-                                                        onChanged: (newValue) {
-                                                          setState(() =>
-                                                              sliderValue5[
-                                                                      _memory] =
-                                                                  newValue);
-                                                        },
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              ElevatedButton(
-                                                onPressed: () {
-                                                  if (sliderValue5[_memory] >
-                                                      _eqvolmin) {
-                                                    setState(() => sliderValue5[
-                                                        _memory]--);
-                                                  }
-                                                },
-                                                child: Text('‐',
-                                                    textScaleFactor: 2),
-                                              ),
-                                              const Text('高',
-                                                  textScaleFactor: 1.5),
-                                            ],
-                                          ),
+                                          _ediSlider3(),
                                         ],
                                       ),
                                     ),
@@ -802,6 +578,339 @@ class _MyWidgetState extends State<MyWidget> {
           ),
         ],
       ),
+    );
+  }
+
+  _ediSlider1() {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        SizedBox(height: 50),
+        ElevatedButton(
+          onPressed: () {
+            if (isSelected1[2] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb1[_memory] < _eqvolmax) {
+                setState(() => sliderValueb1[_memory]++);
+              }
+            }
+            if (isSelected1[0] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb1[_memory + 6] < _eqvolmax) {
+                setState(() => sliderValueb1[_memory + 6]++);
+              }
+            }
+          },
+          child: Text('+', textScaleFactor: 2),
+        ),
+        Expanded(
+          child: SizedBox(
+            width: 100,
+            child: Row(
+              children: [
+                Container(
+                  child: (() {
+                    if (isSelected1[2] == true || isSelected2[1] == true) {
+                      return SfSlider.vertical(
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb1[_memory],
+                        onChanged: null,
+                      );
+                    } else {
+                      return SfSlider.vertical(
+                        activeColor: Colors.blue,
+                        inactiveColor: Colors.grey[400],
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb1[_memory],
+                        onChanged: (newValue) {
+                          setState(() => sliderValueb1[_memory] = newValue);
+                        },
+                      );
+                    }
+                  })(),
+                ),
+                Container(
+                  child: (() {
+                    if (isSelected1[0] == true || isSelected2[1] == true) {
+                      return SfSlider.vertical(
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb1[_memory + 6],
+                        onChanged: null,
+                      );
+                    } else {
+                      return SfSlider.vertical(
+                        activeColor: Colors.red,
+                        inactiveColor: Colors.grey[400],
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb1[_memory + 6],
+                        onChanged: (newValue) {
+                          setState(() => sliderValueb1[_memory + 6] = newValue);
+                        },
+                      );
+                    }
+                  })(),
+                ),
+              ],
+            ),
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            if (isSelected1[2] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb1[_memory] > _eqvolmin) {
+                setState(() => sliderValueb1[_memory]--);
+              }
+            }
+            if (isSelected1[0] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb1[_memory + 6] > _eqvolmin) {
+                setState(() => sliderValueb1[_memory + 6]--);
+              }
+            }
+          },
+          child: Text('‐', textScaleFactor: 2),
+        ),
+        const Text('低', textScaleFactor: 1.5),
+      ],
+    );
+  }
+
+  _ediSlider2() {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        SizedBox(height: 50, child: Text('音響調整', textScaleFactor: 1.5)),
+        ElevatedButton(
+          onPressed: () {
+            if (isSelected1[2] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb2[_memory] < _eqvolmax) {
+                setState(() => sliderValueb2[_memory]++);
+              }
+            }
+            if (isSelected1[0] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb2[_memory + 6] < _eqvolmax) {
+                setState(() => sliderValueb2[_memory + 6]++);
+              }
+            }
+          },
+          child: Text('+', textScaleFactor: 2),
+        ),
+        Expanded(
+          child: SizedBox(
+            width: 100,
+            child: Row(
+              children: [
+                Container(
+                  child: (() {
+                    if (isSelected1[2] == true || isSelected2[1] == true) {
+                      return SfSlider.vertical(
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb2[_memory],
+                        onChanged: null,
+                      );
+                    } else {
+                      return SfSlider.vertical(
+                        activeColor: Colors.blue,
+                        inactiveColor: Colors.grey[400],
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb2[_memory],
+                        onChanged: (newValue) {
+                          setState(() => sliderValueb2[_memory] = newValue);
+                        },
+                      );
+                    }
+                  })(),
+                ),
+                Container(
+                  child: (() {
+                    if (isSelected1[0] == true || isSelected2[1] == true) {
+                      return SfSlider.vertical(
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb2[_memory + 6],
+                        onChanged: null,
+                      );
+                    } else {
+                      return SfSlider.vertical(
+                        activeColor: Colors.red,
+                        inactiveColor: Colors.grey[400],
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb2[_memory + 6],
+                        onChanged: (newValue) {
+                          setState(() => sliderValueb2[_memory + 6] = newValue);
+                        },
+                      );
+                    }
+                  })(),
+                ),
+              ],
+            ),
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            if (isSelected1[2] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb2[_memory] > _eqvolmin) {
+                setState(() => sliderValueb2[_memory]--);
+              }
+            }
+            if (isSelected1[0] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb2[_memory + 6] > _eqvolmin) {
+                setState(() => sliderValueb2[_memory + 6]--);
+              }
+            }
+          },
+          child: Text('‐', textScaleFactor: 2),
+        ),
+        const Text('中', textScaleFactor: 1.5),
+      ],
+    );
+  }
+
+  _ediSlider3() {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        SizedBox(height: 50),
+        ElevatedButton(
+          onPressed: () {
+            if (isSelected1[2] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb3[_memory] < _eqvolmax) {
+                setState(() => sliderValueb3[_memory]++);
+              }
+            }
+            if (isSelected1[0] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb3[_memory + 6] < _eqvolmax) {
+                setState(() => sliderValueb3[_memory + 6]++);
+              }
+            }
+          },
+          child: Text('+', textScaleFactor: 2),
+        ),
+        Expanded(
+          child: SizedBox(
+            width: 100,
+            child: Row(
+              children: [
+                Container(
+                  child: (() {
+                    if (isSelected1[2] == true || isSelected2[1] == true) {
+                      return SfSlider.vertical(
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb3[_memory],
+                        onChanged: null,
+                      );
+                    } else {
+                      return SfSlider.vertical(
+                        activeColor: Colors.blue,
+                        inactiveColor: Colors.grey[400],
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb3[_memory],
+                        onChanged: (newValue) {
+                          setState(() => sliderValueb3[_memory] = newValue);
+                        },
+                      );
+                    }
+                  })(),
+                ),
+                Container(
+                  child: (() {
+                    if (isSelected1[0] == true || isSelected2[1] == true) {
+                      return SfSlider.vertical(
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb3[_memory + 6],
+                        onChanged: null,
+                      );
+                    } else {
+                      return SfSlider.vertical(
+                        activeColor: Colors.red,
+                        inactiveColor: Colors.grey[400],
+                        min: _eqvolmin,
+                        max: _eqvolmax,
+                        stepSize: 1,
+                        showTicks: true,
+                        interval: 1,
+                        value: sliderValueb3[_memory + 6],
+                        onChanged: (newValue) {
+                          setState(() => sliderValueb3[_memory + 6] = newValue);
+                        },
+                      );
+                    }
+                  })(),
+                ),
+              ],
+            ),
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            if (isSelected1[2] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb3[_memory] > _eqvolmin) {
+                setState(() => sliderValueb3[_memory]--);
+              }
+            }
+            if (isSelected1[0] == true || isSelected2[1] == true) {
+            } else {
+              if (sliderValueb3[_memory + 6] > _eqvolmin) {
+                setState(() => sliderValueb3[_memory + 6]--);
+              }
+            }
+          },
+          child: Text('‐', textScaleFactor: 2),
+        ),
+        const Text('高', textScaleFactor: 1.5),
+      ],
     );
   }
 
@@ -986,7 +1095,6 @@ class SettingPage1 extends StatelessWidget {
   }
 }
 
-// サードページ(遷移先)
 class SettingPage2 extends StatelessWidget {
   const SettingPage2({Key? key}) : super(key: key);
   @override
