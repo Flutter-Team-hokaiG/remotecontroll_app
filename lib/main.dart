@@ -28,8 +28,10 @@ class _MyWidgetState extends State<MyWidget> {
   List<int> sliderValue2 = [16, 16, 16, 16, 16, 16];
   int _volmax = 32;
   int _volmin = 0;
-  List<bool> isSelected = List.generate(3, (index) => false);
-  List<bool> isSelected2 = List.generate(2, (index) => false);
+  // List<bool> isSelected1 = List.generate(3, (index) => false);
+  // List<bool> isSelected2 = List.generate(2, (index) => false);
+  List<bool> isSelected1 = [false, true, false];
+  List<bool> isSelected2 = [true, false];
   List<int> sliderValue3 = [0, 0, 0, 0, 0, 0];
   List<int> sliderValue4 = [0, 0, 0, 0, 0, 0];
   List<int> sliderValue5 = [0, 0, 0, 0, 0, 0];
@@ -426,22 +428,45 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                               Expanded(
                                                 child: SizedBox(
-                                                  width: 50,
-                                                  child: SfSlider.vertical(
-                                                    activeColor: Colors.amber,
-                                                    inactiveColor:
-                                                        const Color(0xFF9E9E9E),
-                                                    min: _eqvolmin,
-                                                    max: _eqvolmax,
-                                                    stepSize: 1,
-                                                    value:
-                                                        sliderValue3[_memory],
-                                                    onChanged: (newValue) {
-                                                      setState(() =>
-                                                          sliderValue3[
-                                                                  _memory] =
-                                                              newValue);
-                                                    },
+                                                  width: 100,
+                                                  child: Row(
+                                                    children: [
+                                                      SfSlider.vertical(
+                                                        activeColor:
+                                                            Colors.blue,
+                                                        inactiveColor:
+                                                            const Color(
+                                                                0xFF9E9E9E),
+                                                        min: _eqvolmin,
+                                                        max: _eqvolmax,
+                                                        stepSize: 1,
+                                                        value: sliderValue3[
+                                                            _memory],
+                                                        onChanged: (newValue) {
+                                                          setState(() =>
+                                                              sliderValue3[
+                                                                      _memory] =
+                                                                  newValue);
+                                                        },
+                                                      ),
+                                                      SfSlider.vertical(
+                                                        activeColor: Colors.red,
+                                                        inactiveColor:
+                                                            const Color(
+                                                                0xFF9E9E9E),
+                                                        min: _eqvolmin,
+                                                        max: _eqvolmax,
+                                                        stepSize: 1,
+                                                        value: sliderValue3[
+                                                            _memory],
+                                                        onChanged: (newValue) {
+                                                          setState(() =>
+                                                              sliderValue3[
+                                                                      _memory] =
+                                                                  newValue);
+                                                        },
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
@@ -464,7 +489,7 @@ class _MyWidgetState extends State<MyWidget> {
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.1,
+                                                0.05,
                                             decoration: const BoxDecoration(),
                                           ),
                                           Column(
@@ -487,22 +512,45 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                               Expanded(
                                                 child: SizedBox(
-                                                  width: 50,
-                                                  child: SfSlider.vertical(
-                                                    activeColor: Colors.amber,
-                                                    inactiveColor:
-                                                        const Color(0xFF9E9E9E),
-                                                    min: _eqvolmin,
-                                                    max: _eqvolmax,
-                                                    stepSize: 1,
-                                                    value:
-                                                        sliderValue4[_memory],
-                                                    onChanged: (newValue) {
-                                                      setState(() =>
-                                                          sliderValue4[
-                                                                  _memory] =
-                                                              newValue);
-                                                    },
+                                                  width: 100,
+                                                  child: Row(
+                                                    children: [
+                                                      SfSlider.vertical(
+                                                        activeColor:
+                                                            Colors.blue,
+                                                        inactiveColor:
+                                                            const Color(
+                                                                0xFF9E9E9E),
+                                                        min: _eqvolmin,
+                                                        max: _eqvolmax,
+                                                        stepSize: 1,
+                                                        value: sliderValue4[
+                                                            _memory],
+                                                        onChanged: (newValue) {
+                                                          setState(() =>
+                                                              sliderValue4[
+                                                                      _memory] =
+                                                                  newValue);
+                                                        },
+                                                      ),
+                                                      SfSlider.vertical(
+                                                        activeColor: Colors.red,
+                                                        inactiveColor:
+                                                            const Color(
+                                                                0xFF9E9E9E),
+                                                        min: _eqvolmin,
+                                                        max: _eqvolmax,
+                                                        stepSize: 1,
+                                                        value: sliderValue4[
+                                                            _memory],
+                                                        onChanged: (newValue) {
+                                                          setState(() =>
+                                                              sliderValue4[
+                                                                      _memory] =
+                                                                  newValue);
+                                                        },
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
@@ -525,7 +573,7 @@ class _MyWidgetState extends State<MyWidget> {
                                             width: MediaQuery.of(context)
                                                     .size
                                                     .width *
-                                                0.1,
+                                                0.05,
                                             decoration: const BoxDecoration(),
                                           ),
                                           Column(
@@ -545,22 +593,45 @@ class _MyWidgetState extends State<MyWidget> {
                                               ),
                                               Expanded(
                                                 child: SizedBox(
-                                                  width: 50,
-                                                  child: SfSlider.vertical(
-                                                    activeColor: Colors.amber,
-                                                    inactiveColor:
-                                                        const Color(0xFF9E9E9E),
-                                                    min: _eqvolmin,
-                                                    max: _eqvolmax,
-                                                    stepSize: 1,
-                                                    value:
-                                                        sliderValue5[_memory],
-                                                    onChanged: (newValue) {
-                                                      setState(() =>
-                                                          sliderValue5[
-                                                                  _memory] =
-                                                              newValue);
-                                                    },
+                                                  width: 100,
+                                                  child: Row(
+                                                    children: [
+                                                      SfSlider.vertical(
+                                                        activeColor:
+                                                            Colors.blue,
+                                                        inactiveColor:
+                                                            const Color(
+                                                                0xFF9E9E9E),
+                                                        min: _eqvolmin,
+                                                        max: _eqvolmax,
+                                                        stepSize: 1,
+                                                        value: sliderValue5[
+                                                            _memory],
+                                                        onChanged: (newValue) {
+                                                          setState(() =>
+                                                              sliderValue5[
+                                                                      _memory] =
+                                                                  newValue);
+                                                        },
+                                                      ),
+                                                      SfSlider.vertical(
+                                                        activeColor: Colors.red,
+                                                        inactiveColor:
+                                                            const Color(
+                                                                0xFF9E9E9E),
+                                                        min: _eqvolmin,
+                                                        max: _eqvolmax,
+                                                        stepSize: 1,
+                                                        value: sliderValue5[
+                                                            _memory],
+                                                        onChanged: (newValue) {
+                                                          setState(() =>
+                                                              sliderValue5[
+                                                                      _memory] =
+                                                                  newValue);
+                                                        },
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
@@ -668,21 +739,21 @@ class _MyWidgetState extends State<MyWidget> {
                                   borderWidth: 3,
                                   selectedBorderColor: Colors.lightBlue,
                                   disabledColor: Colors.grey[800],
-                                  isSelected: isSelected,
+                                  isSelected: isSelected1,
                                   children: const <Widget>[
                                     Icon(Icons.chevron_left),
-                                    Icon(Icons.swap_horizontal_circle_outlined),
+                                    Icon(Icons.settings_ethernet_sharp),
                                     Icon(Icons.chevron_right),
                                   ],
                                   onPressed: (int index) {
                                     setState(() {
                                       for (int buttonIndex = 0;
-                                          buttonIndex < isSelected.length;
+                                          buttonIndex < isSelected1.length;
                                           buttonIndex++) {
                                         if (buttonIndex == index) {
-                                          isSelected[buttonIndex] = true;
+                                          isSelected1[buttonIndex] = true;
                                         } else {
-                                          isSelected[buttonIndex] = false;
+                                          isSelected1[buttonIndex] = false;
                                         }
                                       }
                                     });
