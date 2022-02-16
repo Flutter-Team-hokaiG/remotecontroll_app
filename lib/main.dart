@@ -81,7 +81,25 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.menu),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) {
+                  return EditPage1(
+                    memory: _memory,
+                    sliderValue1: sliderValue1,
+                    sliderValue2: sliderValue2,
+                    sliderValueb1: sliderValueb1,
+                    sliderValueb2: sliderValueb2,
+                    sliderValueb3: sliderValueb3,
+                    nr: _nr,
+                    pns: _pns,
+                    zan: _zan,
+                  );
+                }),
+              );
+            },
+            icon: Icon(Icons.menu)),
         title: const Text('リモコンApp'),
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
@@ -104,7 +122,7 @@ class _MyWidgetState extends State<MyWidget> {
       ),
       body: Column(
         children: [
-          Text('メモリ：$_memory'),
+          Text('メモリ：${_memory + 1}'),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
             child: GridView(
@@ -1129,6 +1147,46 @@ class _MyWidgetState extends State<MyWidget> {
           ),
         );
       },
+    );
+  }
+}
+
+class EditPage1 extends StatelessWidget {
+  final int memory;
+  final List<int> sliderValue1;
+  final List<int> sliderValue2;
+  final List<int> sliderValueb1;
+  final List<int> sliderValueb2;
+  final List<int> sliderValueb3;
+  final List<String> nr;
+  final List<String> pns;
+  final List<String> zan;
+  const EditPage1({
+    Key? key,
+    required this.memory,
+    required this.sliderValue1,
+    required this.sliderValue2,
+    required this.sliderValueb1,
+    required this.sliderValueb2,
+    required this.sliderValueb3,
+    required this.nr,
+    required this.pns,
+    required this.zan,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('パラメータ確認')),
+      body: Center(
+        child: ListView(
+          children: <Widget>[
+            Text("選択中のメモリ：${memory + 1}\n"),
+            for (var i = 0; i < 6; i++)
+              Text(
+                  "メモリ${i + 1}　　左${sliderValue1[i]}　右${sliderValue2[i]}\n　微調整　　低域：左${sliderValueb1[i]} 右${sliderValueb1[i + 5]}　中域：左${sliderValueb2[i]} 右${sliderValueb2[i + 5]}　高域：左${sliderValueb3[i]} 右${sliderValueb3[i + 5]}\n　機能　　　雑音抑制：${nr[i]}　突発音抑制：${pns[i]}　残響抑制：${zan[i]}"),
+          ],
+        ),
+      ),
     );
   }
 }
