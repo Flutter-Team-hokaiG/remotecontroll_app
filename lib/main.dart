@@ -34,48 +34,10 @@ class _MyWidgetState extends State<MyWidget> {
   // List<bool> isSelected2 = List.generate(2, (index) => false);
   List<bool> isSelected1 = [false, true, false]; // 片耳・両耳ボタン
   List<bool> isSelected2 = [true, false]; // ミュート用ボタン
-  List<int> sliderValueb1 = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-  ]; // 微調整ボリューム低域（最初の6つが左、後ろの6つが右）
-  List<int> sliderValueb2 = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-  ]; // 微調整ボリューム中域（最初の6つが左、後ろの6つが右）
-  List<int> sliderValueb3 = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0
-  ]; // 微調整ボリューム高域（最初の6つが左、後ろの6つが右）
+  // ↓ 微調整ボリューム低域・中域・高域（最初の6つが左、後ろの6つが右）
+  List<int> sliderValueb1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 低域
+  List<int> sliderValueb2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 中域
+  List<int> sliderValueb3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 高域
   int _eqvolmax = 5; // 微調整ボリューム最大
   int _eqvolmin = -5; // 微調整ボリューム最小
   final _formKey = GlobalKey<FormState>();
@@ -144,14 +106,14 @@ class _MyWidgetState extends State<MyWidget> {
         children: [
           Text('メモリ：$_memory'),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
+            padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
             child: GridView(
               padding: EdgeInsets.zero,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 crossAxisSpacing: 1,
                 mainAxisSpacing: 1,
-                childAspectRatio: 2,
+                childAspectRatio: MediaQuery.of(context).size.width / 250,
               ),
               primary: false,
               shrinkWrap: true,
@@ -1199,7 +1161,7 @@ class _SettingPage1State extends State<SettingPage1> {
             child: (() {
               if (_score == '上上下下左右左右BA') {
                 return Center(
-                    child: Text("中野さん\nありがとうございました", textScaleFactor: 3));
+                    child: Text("中野さん\nお世話になりました", textScaleFactor: 3));
               }
             })(),
           ),
