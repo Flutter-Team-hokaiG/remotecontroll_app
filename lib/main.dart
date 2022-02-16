@@ -421,71 +421,77 @@ class _MyWidgetState extends State<MyWidget> {
                                       ),
                                     ),
 // -------------------------------3page-------------------------------//
-                                    Center(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Align(
-                                              alignment: Alignment.topCenter,
+                                    Center(child: (() {
+                                      if (isSelected2[1] == true) {
+                                        return _digitalMute();
+                                      } else {
+                                        return Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Align(
+                                                alignment: Alignment.topCenter,
+                                                child: Text(
+                                                  '機能調整',
+                                                  textScaleFactor: 1.5,
+                                                )),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                side: BorderSide(
+                                                    color: Colors.blue.shade800,
+                                                    width: 3),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                              ),
+                                              onPressed: () {
+                                                _showDialogNR();
+                                              },
                                               child: Text(
-                                                '機能調整',
-                                                textScaleFactor: 1.5,
-                                              )),
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              side: BorderSide(
-                                                  color: Colors.blue.shade800,
-                                                  width: 3),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
+                                                  '騒音抑制：${_nr[_memory]}',
+                                                  textScaleFactor: 2),
                                             ),
-                                            onPressed: () {
-                                              _showDialogNR();
-                                            },
-                                            child: Text('騒音抑制：${_nr[_memory]}',
-                                                textScaleFactor: 2),
-                                          ),
-                                          SizedBox(height: 50),
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              side: BorderSide(
-                                                  color: Colors.blue.shade800,
-                                                  width: 3),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
+                                            SizedBox(height: 50),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                side: BorderSide(
+                                                    color: Colors.blue.shade800,
+                                                    width: 3),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
                                               ),
+                                              onPressed: () {
+                                                _showDialogPNS();
+                                              },
+                                              child: Text(
+                                                  '突発音抑制：${_pns[_memory]}',
+                                                  textScaleFactor: 2),
                                             ),
-                                            onPressed: () {
-                                              _showDialogPNS();
-                                            },
-                                            child: Text(
-                                                '突発音抑制：${_pns[_memory]}',
-                                                textScaleFactor: 2),
-                                          ),
-                                          SizedBox(height: 50),
-                                          ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              side: BorderSide(
-                                                  color: Colors.blue.shade800,
-                                                  width: 3),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
+                                            SizedBox(height: 50),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                side: BorderSide(
+                                                    color: Colors.blue.shade800,
+                                                    width: 3),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
                                               ),
+                                              onPressed: () {
+                                                _showDialogZAN();
+                                              },
+                                              child: Text(
+                                                  '残響抑制：${_zan[_memory]}',
+                                                  textScaleFactor: 2),
                                             ),
-                                            onPressed: () {
-                                              _showDialogZAN();
-                                            },
-                                            child: Text('残響抑制：${_zan[_memory]}',
-                                                textScaleFactor: 2),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                          ],
+                                        );
+                                      }
+                                    })()),
 // -----------------------------3page_end-----------------------------//
                                   ],
                                 ),
@@ -901,6 +907,58 @@ class _MyWidgetState extends State<MyWidget> {
           child: Text('‐', textScaleFactor: 2),
         ),
         const Text('高', textScaleFactor: 1.5),
+      ],
+    );
+  }
+
+  _digitalMute() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Align(
+            alignment: Alignment.topCenter,
+            child: Text(
+              '機能調整',
+              textScaleFactor: 1.5,
+            )),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.grey,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          onPressed: () {
+            return null;
+          },
+          child: Text('騒音抑制：${_nr[_memory]}', textScaleFactor: 2),
+        ),
+        SizedBox(height: 50),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.grey,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          onPressed: () {
+            return null;
+          },
+          child: Text('突発音抑制：${_pns[_memory]}', textScaleFactor: 2),
+        ),
+        SizedBox(height: 50),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.grey,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+          onPressed: () {
+            return null;
+          },
+          child: Text('残響抑制：${_zan[_memory]}', textScaleFactor: 2),
+        ),
       ],
     );
   }
