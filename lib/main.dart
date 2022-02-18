@@ -1335,12 +1335,7 @@ class _SettingPage2State extends State<SettingPage2> {
           SizedBox(
             height: 250,
             child: Stack(fit: StackFit.expand, children: <Widget>[
-              Image.asset('assets/image/sougen.jpg', fit: BoxFit.fill),
-              // for (var i = 0; i < _countFlower; i++)
-              // Align(
-              //   alignment: Alignment(randomValue, (randomValue + 1) / 2),
-              //   child: Image.asset('assets/image/flower.png', scale: 12),
-              // ),
+              Image.asset('assets/image/haikei.jpg', fit: BoxFit.fill),
               Align(
                 alignment: Alignment((_checkcount / 7) * 1.8 - 1, 0.6),
                 child: (() {
@@ -1356,10 +1351,10 @@ class _SettingPage2State extends State<SettingPage2> {
                   }
                 })(),
               ),
+              Image.asset('assets/image/flower.jpg', fit: BoxFit.fill),
             ]),
           ),
           const SizedBox(height: 20),
-          Text('$_checkcount'),
           Expanded(
             child: ListView.builder(
               itemCount: checkBoxListTileModel.length,
@@ -1370,28 +1365,23 @@ class _SettingPage2State extends State<SettingPage2> {
                     child: Column(
                       children: <Widget>[
                         CheckboxListTile(
-                            activeColor: Colors.lime,
-                            dense: true,
-                            //font change
-                            title: Text(
-                              checkBoxListTileModel[index].title,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: 2,
-                                  decoration:
-                                      checkBoxListTileModel[index].isCheck
-                                          ? TextDecoration.lineThrough
-                                          : TextDecoration.none),
-                            ),
-                            value: checkBoxListTileModel[index].isCheck,
-                            secondary: Container(
-                              height: 20,
-                              width: 20,
-                            ),
-                            onChanged: (bool? val) {
-                              itemChange(val!, index);
-                            })
+                          activeColor: Colors.lime,
+                          dense: true,
+                          title: Text(
+                            checkBoxListTileModel[index].title,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 4,
+                                decoration: checkBoxListTileModel[index].isCheck
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none),
+                          ),
+                          value: checkBoxListTileModel[index].isCheck,
+                          onChanged: (bool? val) {
+                            itemChange(val!, index);
+                          },
+                        )
                       ],
                     ),
                   ),
