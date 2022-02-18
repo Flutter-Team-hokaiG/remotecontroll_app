@@ -1,4 +1,5 @@
-// import 'dart:math';
+import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
@@ -131,7 +132,7 @@ class _MyWidgetState extends State<MyWidget> {
                 crossAxisCount: 3,
                 crossAxisSpacing: 1,
                 mainAxisSpacing: 1,
-                childAspectRatio: MediaQuery.of(context).size.width / 250,
+                childAspectRatio: MediaQuery.of(context).size.width / 220,
               ),
               primary: false,
               shrinkWrap: true,
@@ -142,7 +143,7 @@ class _MyWidgetState extends State<MyWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
-                        iconSize: 50,
+                        iconSize: 30,
                         icon: Icon(Icons.settings,
                             color: _memory == 0 ? Colors.red : Colors.black,
                             size: 30),
@@ -163,7 +164,7 @@ class _MyWidgetState extends State<MyWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
-                        iconSize: 50,
+                        iconSize: 30,
                         icon: Icon(Icons.directions_car,
                             color: _memory == 1 ? Colors.red : Colors.black,
                             size: 30),
@@ -184,7 +185,7 @@ class _MyWidgetState extends State<MyWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
-                        iconSize: 50,
+                        iconSize: 30,
                         icon: Icon(Icons.piano_off,
                             color: _memory == 2 ? Colors.red : Colors.black,
                             size: 30),
@@ -205,7 +206,7 @@ class _MyWidgetState extends State<MyWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
-                        iconSize: 50,
+                        iconSize: 30,
                         icon: Icon(Icons.local_restaurant,
                             color: _memory == 3 ? Colors.red : Colors.black,
                             size: 30),
@@ -226,7 +227,7 @@ class _MyWidgetState extends State<MyWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
-                        iconSize: 50,
+                        iconSize: 30,
                         icon: Icon(Icons.record_voice_over,
                             color: _memory == 4 ? Colors.red : Colors.black,
                             size: 30),
@@ -247,7 +248,7 @@ class _MyWidgetState extends State<MyWidget> {
                     Align(
                       alignment: const AlignmentDirectional(0, -0.5),
                       child: IconButton(
-                        iconSize: 50,
+                        iconSize: 30,
                         icon: Icon(Icons.phone_in_talk,
                             color: _memory == 5 ? Colors.red : Colors.black,
                             size: 30),
@@ -1287,13 +1288,140 @@ class _SettingPage1State extends State<SettingPage1> {
   }
 }
 
-class SettingPage2 extends StatelessWidget {
+class SettingPage2 extends StatefulWidget {
   const SettingPage2({Key? key}) : super(key: key);
+  @override
+  State<SettingPage2> createState() => _SettingPage2State();
+}
+
+class _SettingPage2State extends State<SettingPage2> {
+  // int _countFlower = 1;
+  int _checkcount = 0;
+
+  List<bool> isSelected = List.generate(3, (index) => false);
+  final random = Random();
+  double get randomValue => (random.nextDouble() * 2) - 1;
+  List<CheckBoxListTileModel> checkBoxListTileModel =
+      CheckBoxListTileModel.getUsers();
+  final List<int> _selectedIndex = [];
+
+  void itemChange(bool val, int index) {
+    setState(() {
+      checkBoxListTileModel[index].isCheck = val;
+      if (_selectedIndex.contains(index)) {
+        _selectedIndex.remove(index);
+      } else {
+        _selectedIndex.add(index); // 選択されたらリストに追加する
+      }
+      if (_selectedIndex.isEmpty) {
+        _checkcount = 0;
+        return;
+      }
+      _checkcount = _selectedIndex.length; // 合計値を計算
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('装用効果確認')),
-      body: Center(child: Icon(Icons.tour_outlined, size: 100)),
+      appBar: AppBar(
+        backgroundColor: Colors.blue[200],
+        title: Row(
+          children: const [Text('装用効果確認')],
+        ),
+      ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 250,
+            child: Stack(fit: StackFit.expand, children: <Widget>[
+              Image.asset('assets/image/sougen.jpg', fit: BoxFit.fill),
+              // for (var i = 0; i < _countFlower; i++)
+              // Align(
+              //   alignment: Alignment(randomValue, (randomValue + 1) / 2),
+              //   child: Image.asset('assets/image/flower.png', scale: 12),
+              // ),
+              Align(
+                alignment: Alignment((_checkcount / 7) * 1.8 - 1, 0.6),
+                child: (() {
+                  if (_checkcount < 5) {
+                    return Image.asset('assets/image/walk_girl_walk.png',
+                        scale: 2.7);
+                  } else if (_checkcount < 7) {
+                    return Image.asset('assets/image/smartphone_girl_walk.png',
+                        scale: 3);
+                  } else {
+                    return Image.asset('assets/image/school_randoseru_girl.png',
+                        scale: 3);
+                  }
+                })(),
+              ),
+            ]),
+          ),
+          const SizedBox(height: 20),
+          Text('$_checkcount'),
+          Expanded(
+            child: ListView.builder(
+              itemCount: checkBoxListTileModel.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Card(
+                  child: Container(
+                    padding: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[
+                        CheckboxListTile(
+                            activeColor: Colors.lime,
+                            dense: true,
+                            //font change
+                            title: Text(
+                              checkBoxListTileModel[index].title,
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 2,
+                                  decoration:
+                                      checkBoxListTileModel[index].isCheck
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.none),
+                            ),
+                            value: checkBoxListTileModel[index].isCheck,
+                            secondary: Container(
+                              height: 20,
+                              width: 20,
+                            ),
+                            onChanged: (bool? val) {
+                              itemChange(val!, index);
+                            })
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
+  }
+}
+
+class CheckBoxListTileModel {
+  int userId;
+  String title;
+  bool isCheck;
+
+  CheckBoxListTileModel(
+      {required this.userId, required this.title, required this.isCheck});
+
+  static List<CheckBoxListTileModel> getUsers() {
+    return <CheckBoxListTileModel>[
+      CheckBoxListTileModel(userId: 1, title: "補聴器をつけた？", isCheck: false),
+      CheckBoxListTileModel(userId: 2, title: "補聴器をつけて会話した？", isCheck: false),
+      CheckBoxListTileModel(userId: 3, title: "補聴器をつけてお出かけした？", isCheck: false),
+      CheckBoxListTileModel(userId: 4, title: "補聴器をつけてテレビを見た？", isCheck: false),
+      CheckBoxListTileModel(userId: 5, title: "補聴器のボリュームを変えた？", isCheck: false),
+      CheckBoxListTileModel(userId: 6, title: "補聴器のメモリを変えた？", isCheck: false),
+      CheckBoxListTileModel(userId: 7, title: "補聴器の微調整を変えた？", isCheck: false),
+    ];
   }
 }
