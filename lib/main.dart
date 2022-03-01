@@ -73,6 +73,13 @@ class _MyWidgetState extends State<MyWidget> {
           }),
         );
         break;
+      case 3: // SettingPage2へ移動
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) {
+            return const SettingPage3();
+          }),
+        );
+        break;
       default:
         break;
     }
@@ -116,6 +123,10 @@ class _MyWidgetState extends State<MyWidget> {
               const PopupMenuItem(
                 value: 2, //valueを設定
                 child: Text('装用効果確認'),
+              ),
+              const PopupMenuItem(
+                value: 3, //valueを設定
+                child: Text('補聴器を探す'),
               ),
             ],
           ),
@@ -1277,8 +1288,7 @@ class _SettingPage1State extends State<SettingPage1> {
             height: 200,
             child: (() {
               if (_score == '上上下下左右左右BA') {
-                return Center(
-                    child: Text("中野さん\nお世話になりました", textScaleFactor: 3));
+                return Center(child: Text("コナミコマンド！！", textScaleFactor: 3));
               }
             })(),
           ),
@@ -1325,10 +1335,7 @@ class _SettingPage2State extends State<SettingPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[200],
-        title: Row(
-          children: const [Text('装用効果確認')],
-        ),
+        title: Text('装用効果確認'),
       ),
       body: Column(
         children: [
@@ -1388,6 +1395,28 @@ class _SettingPage2State extends State<SettingPage2> {
                 );
               },
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SettingPage3 extends StatefulWidget {
+  const SettingPage3({Key? key}) : super(key: key);
+  @override
+  _SettingPage3State createState() => _SettingPage3State();
+}
+
+class _SettingPage3State extends State<SettingPage3> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('補聴器を探す')),
+      body: Column(
+        children: [
+          Expanded(
+            child: Image.asset('assets/image/map.jpg'),
           ),
         ],
       ),
