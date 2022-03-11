@@ -26,7 +26,8 @@ class MyWidget extends StatefulWidget {
 class _MyWidgetState extends State<MyWidget> {
   late PageController controller;
   int _memory = 0;
-  List<int> initialValue = [16, 16, 16, 16, 16, 16]; // [元に戻す]の値
+  List<int> initialValue1 = [16, 16, 16, 16, 16, 16]; // [元に戻す]の値
+  List<int> initialValue2 = [16, 16, 16, 16, 16, 16]; // [元に戻す]の値
   List<int> sliderValue1 = [16, 16, 16, 16, 16, 16]; // メインボリューム左
   List<int> sliderValue2 = [16, 16, 16, 16, 16, 16]; // メインボリューム右
   int _volmax = 32; // メインボリューム最大
@@ -415,8 +416,8 @@ class _MyWidgetState extends State<MyWidget> {
                                 ElevatedButton(
                                   onPressed: () {
                                     setState(() {
-                                      sliderValue1 = initialValue;
-                                      sliderValue2 = initialValue;
+                                      sliderValue1 = initialValue1;
+                                      sliderValue2 = initialValue2;
                                     });
                                   },
                                   child: Text('元に戻す'),
