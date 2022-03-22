@@ -48,33 +48,33 @@ class _MyWidgetState extends State<MyWidget> {
   List<String> _zan = ['切', '切', '切', '切', '切', '切']; // 微調整残響抑制
 
   @override
-  void initState() {
+  void initState() {  // PageViewに使用
     controller = PageController();
     super.initState();
   }
 
-  void dispose() {
+  void dispose() {  // PageViewに使用
     controller.dispose();
     super.dispose();
   }
 
-  void popupMenuSelected(selectedMenu) {
+  void popupMenuSelected(selectedMenu) {  // AppbarのActionsに使用
     switch (selectedMenu) {
-      case 1: // SettingPage1へ移動
+      case 1: // selectedMenuが1のとき、SettingPage1へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage1();
           }),
         );
         break;
-      case 2: // SettingPage2へ移動
+      case 2: // selectedMenuが2のとき、SettingPage2へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage2();
           }),
         );
         break;
-      case 3: // SettingPage2へ移動
+      case 3: // selectedMenuが3のとき、SettingPage2へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage3();
@@ -90,7 +90,7 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
+        leading: IconButton(  // Appbarの左側
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) {
@@ -104,15 +104,15 @@ class _MyWidgetState extends State<MyWidget> {
                     nr: _nr,
                     pns: _pns,
                     zan: _zan,
-                  );
+                  );  // ()の中の変数をEditPage1に受け渡し
                 }),
               );
             },
             icon: Icon(Icons.menu)),
-        title: const Text('リモコンApp'),
+        title: const Text('リモコンApp'), // Appbarの中心
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
-        actions: <Widget>[
+        actions: <Widget>[  // Appbarの右側
           PopupMenuButton(
             icon: Icon(Icons.account_box_rounded, size: 30),
             onSelected: popupMenuSelected, //実行される関数名
@@ -135,7 +135,7 @@ class _MyWidgetState extends State<MyWidget> {
       ),
       body: Column(
         children: [
-          Text('メモリ：${_memory + 1}'),
+          Text('メモリ：${_memory + 1}'), // 選択中のメモリを表示
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
             child: GridView(
