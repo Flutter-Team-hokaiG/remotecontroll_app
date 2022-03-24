@@ -1196,7 +1196,7 @@ class EditPage1 extends StatelessWidget {
             Text("選択中のメモリ：${memory + 1}\n"),
             for (var i = 0; i < 6; i++)
               Text(
-                  "メモリ${i + 1}　　左${sliderValue1[i]}　右${sliderValue2[i]}\n　微調整　　低域：左${sliderValueb1[i]} 右${sliderValueb1[i + 5]}　中域：左${sliderValueb2[i]} 右${sliderValueb2[i + 5]}　高域：左${sliderValueb3[i]} 右${sliderValueb3[i + 5]}\n　機能　　　雑音抑制：${nr[i]}　突発音抑制：${pns[i]}　残響抑制：${zan[i]}"),
+                  "メモリ${i + 1}　　左${sliderValue1[i]}　右${sliderValue2[i]}\n　微調整　　低域：左${sliderValueb1[i]} 右${sliderValueb1[i + 6]}　中域：左${sliderValueb2[i]} 右${sliderValueb2[i + 6]}　高域：左${sliderValueb3[i]} 右${sliderValueb3[i + 6]}\n　機能　　　雑音抑制：${nr[i]}　突発音抑制：${pns[i]}　残響抑制：${zan[i]}"),
           ],
         ),
       ),
