@@ -48,33 +48,33 @@ class _MyWidgetState extends State<MyWidget> {
   List<String> _zan = ['切', '切', '切', '切', '切', '切']; // 微調整残響抑制
 
   @override
-  void initState() {
+  void initState() {  // PageViewに使用
     controller = PageController();
     super.initState();
   }
 
-  void dispose() {
+  void dispose() {  // PageViewに使用
     controller.dispose();
     super.dispose();
   }
 
-  void popupMenuSelected(selectedMenu) {
+  void popupMenuSelected(selectedMenu) {  // AppbarのActionsに使用
     switch (selectedMenu) {
-      case 1: // SettingPage1へ移動
+      case 1: // selectedMenuが1のとき、SettingPage1へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage1();
           }),
         );
         break;
-      case 2: // SettingPage2へ移動
+      case 2: // selectedMenuが2のとき、SettingPage2へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage2();
           }),
         );
         break;
-      case 3: // SettingPage2へ移動
+      case 3: // selectedMenuが3のとき、SettingPage2へ移動
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return const SettingPage3();
@@ -90,7 +90,7 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
+        leading: IconButton(  // Appbarの左側
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) {
@@ -104,15 +104,15 @@ class _MyWidgetState extends State<MyWidget> {
                     nr: _nr,
                     pns: _pns,
                     zan: _zan,
-                  );
+                  );  // ()の中の変数をEditPage1に受け渡し
                 }),
               );
             },
             icon: Icon(Icons.menu)),
-        title: const Text('リモコンApp'),
+        title: const Text('リモコンApp'), // Appbarの中心
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
-        actions: <Widget>[
+        actions: <Widget>[  // Appbarの右側
           PopupMenuButton(
             icon: Icon(Icons.account_box_rounded, size: 30),
             onSelected: popupMenuSelected, //実行される関数名
@@ -135,7 +135,7 @@ class _MyWidgetState extends State<MyWidget> {
       ),
       body: Column(
         children: [
-          Text('メモリ：${_memory + 1}'),
+          Text('メモリ：${_memory + 1}'), // 選択中のメモリを表示
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
             child: GridView(
@@ -434,7 +434,7 @@ class _MyWidgetState extends State<MyWidget> {
                           children: [
                             Container(
                               child: Expanded(
-                                child: PageView(
+                                child: PageView(  // PageViewの中にさらにPageViewが入っている
                                   controller: controller,
                                   children: <Widget>[
                                     Center(
@@ -443,18 +443,18 @@ class _MyWidgetState extends State<MyWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          _ediSlider1(),
+                                          _ediSlider1(),  // 関数に飛んでいる
                                           SizedBox(width: 10),
-                                          _ediSlider2(),
+                                          _ediSlider2(),  // 関数に飛んでいる
                                           SizedBox(width: 10),
-                                          _ediSlider3(),
+                                          _ediSlider3(),  // 関数に飛んでいる
                                         ],
                                       ),
                                     ),
 // -------------------------------3page-------------------------------//
                                     Center(child: (() {
                                       if (isSelected2[1] == true) {
-                                        return _digitalMute();
+                                        return _digitalMute();  // 関数に飛んでいる
                                       } else {
                                         return Column(
                                           mainAxisAlignment:
@@ -477,7 +477,7 @@ class _MyWidgetState extends State<MyWidget> {
                                                 ),
                                               ),
                                               onPressed: () {
-                                                _showDialogNR();
+                                                _showDialogNR();  // 関数に飛んでいる
                                               },
                                               child: Text(
                                                   '騒音抑制：${_nr[_memory]}',
@@ -495,7 +495,7 @@ class _MyWidgetState extends State<MyWidget> {
                                                 ),
                                               ),
                                               onPressed: () {
-                                                _showDialogPNS();
+                                                _showDialogPNS();  // 関数に飛んでいる
                                               },
                                               child: Text(
                                                   '突発音抑制：${_pns[_memory]}',
@@ -513,7 +513,7 @@ class _MyWidgetState extends State<MyWidget> {
                                                 ),
                                               ),
                                               onPressed: () {
-                                                _showDialogZAN();
+                                                _showDialogZAN();  // 関数に飛んでいる
                                               },
                                               child: Text(
                                                   '残響抑制：${_zan[_memory]}',
@@ -609,7 +609,7 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  _ediSlider1() {
+  _ediSlider1() {  // 音響調整の低域
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -720,7 +720,7 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  _ediSlider2() {
+  _ediSlider2() {  // 音響調整の中域
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -831,7 +831,7 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  _ediSlider3() {
+  _ediSlider3() {  // 音響調整の高域
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -942,7 +942,7 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  _digitalMute() {
+  _digitalMute() {  // ミュート時の機能調整
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -994,7 +994,7 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  _showDialogNR() {
+  _showDialogNR() {  // NRのアラート
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -1081,7 +1081,7 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  _showDialogPNS() {
+  _showDialogPNS() {  // PNSのアラート
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -1129,7 +1129,7 @@ class _MyWidgetState extends State<MyWidget> {
     );
   }
 
-  _showDialogZAN() {
+  _showDialogZAN() {  // 残響抑制のアラート
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -1164,7 +1164,7 @@ class _MyWidgetState extends State<MyWidget> {
   }
 }
 
-class EditPage1 extends StatelessWidget {
+class EditPage1 extends StatelessWidget {  // Appbarのleading
   final int memory;
   final List<int> sliderValue1;
   final List<int> sliderValue2;
@@ -1185,7 +1185,7 @@ class EditPage1 extends StatelessWidget {
     required this.nr,
     required this.pns,
     required this.zan,
-  }) : super(key: key);
+  }) : super(key: key);  // 受け取る値
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1210,7 +1210,7 @@ class SettingPage1 extends StatefulWidget {
   State<SettingPage1> createState() => _SettingPage1State();
 }
 
-class _SettingPage1State extends State<SettingPage1> {
+class _SettingPage1State extends State<SettingPage1> {  // Appbarのactions
   String _score = "";
   @override
   Widget build(BuildContext context) {
@@ -1305,7 +1305,7 @@ class SettingPage2 extends StatefulWidget {
   State<SettingPage2> createState() => _SettingPage2State();
 }
 
-class _SettingPage2State extends State<SettingPage2> {
+class _SettingPage2State extends State<SettingPage2> {  // Appbarのactions
   // int _countFlower = 1;
   int _checkcount = 0;
 
@@ -1409,7 +1409,7 @@ class SettingPage3 extends StatefulWidget {
   _SettingPage3State createState() => _SettingPage3State();
 }
 
-class _SettingPage3State extends State<SettingPage3> {
+class _SettingPage3State extends State<SettingPage3> {  // Appbarのactions
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1425,7 +1425,7 @@ class _SettingPage3State extends State<SettingPage3> {
   }
 }
 
-class CheckBoxListTileModel {
+class CheckBoxListTileModel { // チェックボックス
   int userId;
   String title;
   bool isCheck;
