@@ -1,5 +1,6 @@
 import 'dart:math';
 //import 'dart:ui';
+//GitHubの説明したい
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
